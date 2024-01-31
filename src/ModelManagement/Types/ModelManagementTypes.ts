@@ -10,83 +10,57 @@
 
 export interface ModelCreateRequestDTO {
   guidId: string;
-  modelName: string | null;
-  modelTypesName: string | null;
+  modelName: string;
+  modelTypesName: string;
 }
 
 export interface ModelGetRequestDTO {
-  modelName: string | null;
+  modelName: string;
 }
 
 export interface ModelResponseDTO {
   guidId: string;
-  modelName: string | null;
-  modelTypeName: string | null;
-  modelVersions: ModelVersionResponseDTO[] | null;
+  modelName: string;
+  modelTypeName: string;
+  modelVersions: ModelVersionResponseDTO[] | undefined;
 }
 
 export interface ModelTypeCreateRequestDTO {
   guidId: string;
-  modelTypeName: string | null;
-  modelTypeGroupName: string | null;
+  modelTypeName: string;
+  modelVersionGroupName: string;
 }
 
 export interface ModelTypeGetRequestDTO {
-  modelTypeName: string | null;
-}
-
-export interface ModelTypeGroupCreateRequestDTO {
-  modelTypeGroupName: string | null;
-  testingMode: string | null;
-  description: string | null;
-  guidId: string;
-}
-
-export interface ModelTypeGroupGetRequestDTO {
-  value: any | null;
-}
-
-export interface ModelTypeGroupResponseDTO {
-  modelTypeGroupName: string | undefined;
-  testingMode: string | undefined;
-  description: string | undefined;
-  guidId: string;
-}
-
-export interface ModelTypeGroupUpdateRequestDTO {
-  modelTypeGroupName: string | null;
-  testingMode: string | null;
-  description: string | null;
-  guidId: string;
+  modelTypeName: string;
 }
 
 export interface ModelTypeResponseDTO {
-  modelTypeId: string | null;
-  modelTypeName: string | null;
-  modelTypeGroupName: string | null;
-  models: ModelResponseDTO[] | null;
+  modelTypeId: string;
+  modelTypeName: string;
+  models: ModelResponseDTO[] | undefined;
 }
 
 export interface ModelTypeUpdateRequestDTO {
   modelTypeId: string;
-  modelTypeName: string | null;
-  modelTypeGroupName: string | null;
+  modelTypeName: string;
+  modelVersionGroupName: string;
 }
 
 export interface ModelUpdateRequestDTO {
   modelId: string;
-  modelName: string | null;
-  modelTypesName: string | null;
+  modelName: string;
+  modelTypesName: string;
 }
 
 export interface ModelVersionCreateRequestDTO {
   modelVersionId: number;
-  versionDescription: string | null;
-  modelVersionName: string | null;
-  modelName: string | null;
-  defaultTestingMode: string | null;
+  versionDescription: string;
+  modelVersionName: string;
+  modelName: string;
+  defaultTestingMode: string;
   timestamp: Date;
-  userName: string | null;
+  userName: string;
   capacity: number;
   nominalOutput: number;
   nominalOutputPercentage: number;
@@ -96,19 +70,19 @@ export interface ModelVersionCreateRequestDTO {
   nMax: number;
   safeLoad: number;
   ultimateLoad: number;
-  shellMaterialName: string | null;
+  shellMaterialName: string;
   alloy: boolean;
   defaultCableLength: number;
   numberOfGauges: number;
   resistance: number;
-  cCNumber: string | null;
-  accuracyClass: string | null;
-  application: string | null;
+  cCNumber: string;
+  accuracyClass: string;
+  application: string;
   temperingHardnessLow: number;
   temperingHardnessHigh: number;
-  nTEPCertificationId: string | null;
+  nTEPCertificationId: string;
   nTEPCertificationTimestamp: Date;
-  oIMLCertificationId: string | null;
+  oIMLCertificationId: string;
   oIMLCertificationTimestamp: Date;
   testPointDirection: boolean;
   guidId: string;
@@ -116,56 +90,81 @@ export interface ModelVersionCreateRequestDTO {
 
 export interface ModelVersionDocumentCreateRequestDTO {
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   modelVersionDocumentId: number;
-  documentDescription: string | null;
-  stage: string | null;
-  documentDrive: string | null;
-  documentPath: string | null;
-  documentname: string | null;
+  documentDescription: string;
+  stage: string;
+  documentDrive: string;
+  documentPath: string;
+  documentname: string;
   timestamp: Date;
-  userName: string | null;
+  userName: string;
   guidId: string;
 }
 
 export interface ModelVersionDocumentGetRequestDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ModelVersionDocumentResponseDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ModelVersionDocumentUpdateRequestDTO {
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   modelVersionDocumentId: number;
-  documentDescription: string | null;
-  stage: string | null;
-  documentDrive: string | null;
-  documentPath: string | null;
-  documentname: string | null;
+  documentDescription: string;
+  stage: string;
+  documentDrive: string;
+  documentPath: string;
+  documentname: string;
   timestamp: Date;
-  userName: string | null;
+  userName: string;
   guidId: string;
 }
 
 export interface ModelVersionGetRequestDTO {
-  value: any | null;
+  value: any | undefined;
+}
+
+export interface ModelVersionGroupCreateRequestDTO {
+  modelVersionGroupName: string;
+  testingMode: string;
+  description: string;
+  guidId: string;
+}
+
+export interface ModelVersionGroupGetRequestDTO {
+  value: any | undefined;
+}
+
+export interface ModelVersionGroupResponseDTO {
+  modelVersionGroupName: string;
+  testingMode: string;
+  description: string;
+  guidId: string;
+}
+
+export interface ModelVersionGroupUpdateRequestDTO {
+  modelVersionGroupName: string;
+  testingMode: string;
+  description: string;
+  guidId: string;
 }
 
 export interface ModelVersionResponseDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ModelVersionUpdateRequestDTO {
   modelVersionId: number;
-  versionDescription: string | null;
-  modelVersionName: string | null;
-  modelName: string | null;
-  defaultTestingMode: string | null;
+  versionDescription: string;
+  modelVersionName: string;
+  modelName: string;
+  defaultTestingMode: string;
   timestamp: Date;
-  userName: string | null;
+  userName: string;
   capacity: number;
   nominalOutput: number;
   nominalOutputPercentage: number;
@@ -175,19 +174,19 @@ export interface ModelVersionUpdateRequestDTO {
   nMax: number;
   safeLoad: number;
   ultimateLoad: number;
-  shellMaterialName: string | null;
+  shellMaterialName: string;
   alloy: boolean;
   defaultCableLength: number;
   numberOfGauges: number;
   resistance: number;
-  cCNumber: string | null;
-  accuracyClass: string | null;
-  application: string | null;
+  cCNumber: string;
+  accuracyClass: string;
+  application: string;
   temperingHardnessLow: number;
   temperingHardnessHigh: number;
-  nTEPCertificationId: string | null;
+  nTEPCertificationId: string;
   nTEPCertificationTimestamp: Date;
-  oIMLCertificationId: string | null;
+  oIMLCertificationId: string;
   oIMLCertificationTimestamp: Date;
   testPointDirection: boolean;
   guidId: string;
@@ -196,91 +195,91 @@ export interface ModelVersionUpdateRequestDTO {
 export interface ProductCreateRequestDTO {
   productId: number;
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   capacity: number;
   timestamp: Date;
-  stage: string | null;
-  subStage: string | null;
-  salesOrderId: string | null;
+  stage: string;
+  subStage: string;
+  salesOrderId: string;
   cableLength: number;
   inspectionResult: number;
-  defaultTestingMode: string | null;
-  modelTypeGroupName: string | null;
-  usedTestingMode: string | null;
-  thermexPurcharseOrderNo: string | null;
-  machiningPurcharseOrderNo: string | null;
-  steelPurcharseOrderNo: string | null;
+  defaultTestingMode: string;
+  modelVersionGroupName: string;
+  usedTestingMode: string;
+  thermexPurcharseOrderNo: string;
+  machiningPurcharseOrderNo: string;
+  steelPurcharseOrderNo: string;
   batcNo: number;
   guidId: string;
 }
 
 export interface ProductGetRequestDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ProductResponseDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ProductUpdateRequestDTO {
   productId: number;
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   capacity: number;
   timestamp: Date;
-  stage: string | null;
-  subStage: string | null;
-  salesOrderId: string | null;
+  stage: string;
+  subStage: string;
+  salesOrderId: string;
   cableLength: number;
   inspectionResult: number;
-  defaultTestingMode: string | null;
-  modelTypeGroupName: string | null;
-  usedTestingMode: string | null;
-  thermexPurcharseOrderNo: string | null;
-  machiningPurcharseOrderNo: string | null;
-  steelPurcharseOrderNo: string | null;
+  defaultTestingMode: string;
+  modelVersionGroupName: string;
+  usedTestingMode: string;
+  thermexPurcharseOrderNo: string;
+  machiningPurcharseOrderNo: string;
+  steelPurcharseOrderNo: string;
   batcNo: number;
   guidId: string;
 }
 
 export interface ShellMaterialCreateRequestDTO {
-  shellMaterialName: string | null;
+  shellMaterialName: string;
   alloy: boolean;
   guidId: string;
 }
 
 export interface ShellMaterialGetRequestDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ShellMaterialResponseDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface ShellMaterialUpdateRequestDTO {
-  shellMaterialName: string | null;
+  shellMaterialName: string;
   alloy: boolean;
   guidId: string;
 }
 
 export interface TestPointCreateRequestDTO {
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   capacityTestPoint: number;
   guidId: string;
 }
 
 export interface TestPointGetRequestDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface TestPointResponseDTO {
-  value: any | null;
+  value: any | undefined;
 }
 
 export interface TestPointUpdateRequestDTO {
   modelVersionId: number;
-  modelName: string | null;
+  modelName: string;
   capacityTestPoint: number;
   guidId: string;
 }
