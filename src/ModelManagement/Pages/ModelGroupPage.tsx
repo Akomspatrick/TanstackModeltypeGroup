@@ -1,7 +1,7 @@
 import { ModelTypeGroupResponseDTO } from "../Interfaces/AllInterfaces";
 
 import {
-  useModelTypeGroupDetails,
+
   useModelTypeGroupDetails1,
   useModelTypeGroupNames,
 } from "../Hooks/useGetModelTypeGroupHooks";

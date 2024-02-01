@@ -1,5 +1,6 @@
 import CreateModelVersionGroup from "./ModelManagement/Features/ModelTypeGroups/CreateModelVersionGroup";
 import ViewModelVersionGroup from "./ModelManagement/Features/ModelTypeGroups/ViewModelVersionGroup";
+import NewModelGroupPage from "./ModelManagement/Pages/NewModelGroupPage";
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
  
  https://www.google.com/search?q=crud+with+react&rlz=1C1UEAD_enCA1075CA1075&oq=crud+with+rea&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBggBEEUYOTIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIICAUQABgWGB4yCAgGEAAYFhgeMggIBxAAGBYYHjIICAgQABgWGB4yCAgJEAAYFhge0gEJNTk1NmowajE1qAIAsAIA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:9ab4ed11,vid:DOkSU3yg4vQ,st:0
  */}
-      <ViewModelVersionGroup />
-      <CreateModelVersionGroup />
+     
+      <NewModelGroupPage />
     </>
   );
 }

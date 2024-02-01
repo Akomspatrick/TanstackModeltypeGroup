@@ -5,8 +5,11 @@ import { ModelVersionGroupCreateRequestDTO } from "../../Types/ModelManagementTy
 import { DevTool } from "@hookform/devtools";
 import { useCreateModelTypeGroup } from "../../Hooks/useCreateModelTypeHooks";
 import { Guid } from "guid-typescript";
+import { useDispatch } from "react-redux";
+import  setModelVersionGroup  from "../../Reducers/SomethingReducer";
 
 const CreateModelVersionGroup = () => {
+  const  dispatch = useDispatch();
   const { register, handleSubmit, formState, control, setError } =
     useForm<ModelVersionGroupCreateRequestDTO>({defaultValues: {  description: "", modelVersionGroupName: "",testingMode: "",}, });
   const { errors, isSubmitting } = formState;
@@ -14,10 +17,13 @@ const CreateModelVersionGroup = () => {
   const onSubmit = async (data: ModelVersionGroupCreateRequestDTO) => {
     try {
       data.guidId = Guid.create().toString();
+      //dispatch({ type: "ADD_MODEL_VERSION_GROUP", payload: data });
+     dispatch(setModelVersionGroup(data));  
+     //https://www.youtube.com/watch?v=eFh2Kr9hfyo&t=356s
       await addModelVersionGroupDataMutation(data);
     } catch (err) {
       console.log(err);
-      setError("root", { message: "err.message-- Errotype yet undecoded" });
+      setError("root", { message: "err.message-- Errortype yet undecoded" });
     }
   };
   const paperStyle = {
@@ -64,20 +70,27 @@ const CreateModelVersionGroup = () => {
           autoFocus
           {...register("modelVersionGroupName", {
             required: "modelVersionGroupName is required",
+            maxLength: { value: 32, message: "Max length is 32" },
+            minLength: { value: 2, message: "Min length is 2" },
+
           })}
           error={!!errors.modelVersionGroupName}
           helperText={errors.modelVersionGroupName?.message}
         />
+        {errors.modelVersionGroupName && (
+          <p>{errors.modelVersionGroupName.message}</p>
+        )}
         <TextField
           margin="normal"
           required
           fullWidth
           label="Description"
           id="modeltypeGroupDescription"
-          {...register("description", { required: "description is required" })}
+          {...register("description", { required: "description is required" ,maxLength: { value: 64, message: "Max length is 64" }  } )}  
           error={!!errors.description}
           helperText={errors.description?.message}
         />
+        {errors.description && <p>{errors.description.message}</p>}
         <TextField
           id="modeltypeGrouTestingMode"
           {...register("testingMode", { required: "testingMode is required" })}
@@ -96,7 +109,7 @@ const CreateModelVersionGroup = () => {
             </option>
           ))}
         </TextField>
-
+         {errors.testingMode && <p>{errors.testingMode.message}</p>}
         {isSubmitting ? (
           <>
             <h1>Seding to Server ....Pls wait</h1>{" "}
@@ -110,6 +123,7 @@ const CreateModelVersionGroup = () => {
         >
           {isSubmitting ? "Pls wait " : " Create Model Type Group"}
         </Button>
+        {errors.root && <p>{errors.root.message}</p>}
       </Box>
       <DevTool control={control} />
     </Paper>

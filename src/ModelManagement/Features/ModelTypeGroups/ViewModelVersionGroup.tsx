@@ -1,14 +1,21 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import {
   GridColDef,
-  GridValidRowModel,
-  GridValueGetterParams,
+  GridValidRowModel
 } from "@mui/x-data-grid";
 import SimpleDataTable from "../../../Components/SimpleDataTable";
 import { defaultButtonRadius } from "../../../Constants/componenetsConstants";
 import { useGetModelVersionGroups } from "../../Hooks/useGetModelTypeGroupHooks";
+import { useSelector } from "react-redux";
+
+import { selectModelVersionGroup } from "../../../Store/Store";
 
 const ViewModelVersionGroup = () => {
+    
+  const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
+  console.log( modelversionsgropus);
+  console.log("modelversionsgropus");
+
   const result = useGetModelVersionGroups();
   const newrows: GridValidRowModel[] = [];
   if (result.isSuccess) {
@@ -30,7 +37,7 @@ const ViewModelVersionGroup = () => {
   if (result.isLoading) {
     return <div>Loading...</div>;
   }
-  console.log(result.data);
+ 
 
   const columns: GridColDef[] = [
     { field: "modelVersionGroupName", headerName: "GROUPNAME", width: 70 },
@@ -94,14 +101,6 @@ const ViewModelVersionGroup = () => {
           <SimpleDataTable columns={columns} rows={newrows} pageSize={3} />
         )}
 
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Sign In
-        </Button>
       </Box>
     </Paper>
   );
