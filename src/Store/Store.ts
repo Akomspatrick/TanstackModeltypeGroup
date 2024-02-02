@@ -18,3 +18,4 @@ export default Store;
 
 type RootState = ReturnType<typeof Store.getState>;
 export const selectModelVersionGroup = (state: RootState) => state.modelVersionReducer.modelversiongroups;
+type AppDispatch = typeof Store.dispatch

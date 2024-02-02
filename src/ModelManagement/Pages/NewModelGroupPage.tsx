@@ -5,7 +5,7 @@ const NewModelGroupPage = () => {
   return (
     <>
       <ViewModelVersionGroup />
-      {/* <CreateModelVersionGroup /> */}
+      { <CreateModelVersionGroup /> }
     </>
   );
 };

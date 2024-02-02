@@ -1,26 +1,42 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import {defaultButtonRadius,autoProcessingModes, } from "../../../Constants/componenetsConstants"; 
+import {
+  defaultButtonRadius,
+  autoProcessingModes,
+} from "../../../Constants/componenetsConstants";
 import { useForm } from "react-hook-form";
 import { ModelVersionGroupCreateRequestDTO } from "../../Types/ModelManagementTypes";
 import { DevTool } from "@hookform/devtools";
 import { useCreateModelTypeGroup } from "../../Hooks/useCreateModelTypeHooks";
 import { Guid } from "guid-typescript";
-import { useDispatch } from "react-redux";
-import  setModelVersionGroup  from "../../Reducers/SomethingReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { setModelVersionGroup, } from "../../Reducers/SomethingReducer";
+import { selectModelVersionGroup } from "../../../Store/Store";
 
 const CreateModelVersionGroup = () => {
-  const  dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
+
   const { register, handleSubmit, formState, control, setError } =
-    useForm<ModelVersionGroupCreateRequestDTO>({defaultValues: {  description: "", modelVersionGroupName: "",testingMode: "",}, });
+    useForm<ModelVersionGroupCreateRequestDTO>({
+      defaultValues: {
+        description: "",
+        modelVersionGroupName: "",
+        testingMode: "",
+      },
+    });
   const { errors, isSubmitting } = formState;
-  const { mutateAsync: addModelVersionGroupDataMutation } = useCreateModelTypeGroup();
+  const { mutateAsync: addModelVersionGroupDataMutation } =
+    useCreateModelTypeGroup();
   const onSubmit = async (data: ModelVersionGroupCreateRequestDTO) => {
     try {
       data.guidId = Guid.create().toString();
-      //dispatch({ type: "ADD_MODEL_VERSION_GROUP", payload: data });
-     dispatch(setModelVersionGroup(data));  
-     //https://www.youtube.com/watch?v=eFh2Kr9hfyo&t=356s
-      await addModelVersionGroupDataMutation(data);
+      // dispatch({ type: "modelVersionGroup", payload: data });
+      dispatch(setModelVersionGroup (data))
+      console.log( modelversionsgropus);
+      console.log("TRY TO SEE ADDITIONmodelversionsgropus");
+     // dispatch(setModelVersionGroup("xcsacsa"));
+      //https://www.youtube.com/watch?v=eFh2Kr9hfyo&t=356s
+    //  await addModelVersionGroupDataMutation(data);
     } catch (err) {
       console.log(err);
       setError("root", { message: "err.message-- Errortype yet undecoded" });
@@ -72,7 +88,6 @@ const CreateModelVersionGroup = () => {
             required: "modelVersionGroupName is required",
             maxLength: { value: 32, message: "Max length is 32" },
             minLength: { value: 2, message: "Min length is 2" },
-
           })}
           error={!!errors.modelVersionGroupName}
           helperText={errors.modelVersionGroupName?.message}
@@ -86,7 +101,10 @@ const CreateModelVersionGroup = () => {
           fullWidth
           label="Description"
           id="modeltypeGroupDescription"
-          {...register("description", { required: "description is required" ,maxLength: { value: 64, message: "Max length is 64" }  } )}  
+          {...register("description", {
+            required: "description is required",
+            maxLength: { value: 64, message: "Max length is 64" },
+          })}
           error={!!errors.description}
           helperText={errors.description?.message}
         />
@@ -109,7 +127,7 @@ const CreateModelVersionGroup = () => {
             </option>
           ))}
         </TextField>
-         {errors.testingMode && <p>{errors.testingMode.message}</p>}
+        {errors.testingMode && <p>{errors.testingMode.message}</p>}
         {isSubmitting ? (
           <>
             <h1>Seding to Server ....Pls wait</h1>{" "}

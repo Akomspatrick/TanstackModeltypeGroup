@@ -14,8 +14,8 @@ const ViewModelVersionGroup = () => {
     
   const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
   console.log( modelversionsgropus);
-  console.log("modelversionsgropus");
-
+  console.log(" i WAS CALLED AT modelversionsgropus",Date.now());
+ 
   const result = useGetModelVersionGroups();
   const newrows: GridValidRowModel[] = [];
   if (result.isSuccess) {
