@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button,  Paper, Typography } from "@mui/material";
 import {
   GridColDef,
   GridValidRowModel
@@ -9,13 +9,14 @@ import { useGetModelVersionGroups } from "../../Hooks/useGetModelTypeGroupHooks"
 import { useSelector } from "react-redux";
 
 import { selectModelVersionGroup } from "../../../Store/Store";
+import {  useNavigate } from "react-router-dom";
 
 const ViewModelVersionGroup = () => {
     
   const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
   console.log( modelversionsgropus);
   console.log(" i WAS CALLED AT modelversionsgropus",Date.now());
- 
+  const navigate = useNavigate();
   const result = useGetModelVersionGroups();
   const newrows: GridValidRowModel[] = [];
   if (result.isSuccess) {
@@ -56,6 +57,12 @@ const ViewModelVersionGroup = () => {
     width: 800,
     margin: "20px auto",
   };
+    function NavigateHandler(event: React.MouseEvent<HTMLButtonElement>): void {
+
+        navigate("/newgroups", { replace: true });
+
+    }
+
   return (
     <Paper
       elevation={20}
@@ -88,10 +95,14 @@ const ViewModelVersionGroup = () => {
           <Typography component="span" variant="h6">
             Model Version Groups
           </Typography>
+
           <Button
+         
+            
             variant="contained"
             sx={{ borderRadius: defaultButtonRadius, marginBottom: 4 }}
             color="primary"
+            onClick={NavigateHandler}
           >
             + Add New Model Version Group
           </Button>

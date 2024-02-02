@@ -1,5 +1,4 @@
-import CreateModelVersionGroup from "./ModelManagement/Features/ModelTypeGroups/CreateModelVersionGroup";
-import ViewModelVersionGroup from "./ModelManagement/Features/ModelTypeGroups/ViewModelVersionGroup";
+
 import NewModelGroupPage from "./ModelManagement/Pages/NewModelGroupPage";
 
 function App() {

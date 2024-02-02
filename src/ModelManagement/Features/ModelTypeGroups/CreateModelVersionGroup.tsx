@@ -11,11 +11,12 @@ import { Guid } from "guid-typescript";
 import { useDispatch, useSelector } from "react-redux";
 import { setModelVersionGroup, } from "../../Reducers/SomethingReducer";
 import { selectModelVersionGroup } from "../../../Store/Store";
+import { useNavigate } from "react-router-dom";
 
 const CreateModelVersionGroup = () => {
   const dispatch = useDispatch();
   const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
-
+  const navigate = useNavigate();
   const { register, handleSubmit, formState, control, setError } =
     useForm<ModelVersionGroupCreateRequestDTO>({
       defaultValues: {
@@ -34,6 +35,8 @@ const CreateModelVersionGroup = () => {
       dispatch(setModelVersionGroup (data))
       console.log( modelversionsgropus);
       console.log("TRY TO SEE ADDITIONmodelversionsgropus");
+      navigate("/groups", { replace: true });
+
      // dispatch(setModelVersionGroup("xcsacsa"));
       //https://www.youtube.com/watch?v=eFh2Kr9hfyo&t=356s
     //  await addModelVersionGroupDataMutation(data);
@@ -48,6 +51,10 @@ const CreateModelVersionGroup = () => {
     width: 700,
     margin: "50px auto",
   };
+
+  function onCancelHandler(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    navigate("/groups", { replace: true });
+  }
 
   return (
     <Paper
@@ -133,14 +140,30 @@ const CreateModelVersionGroup = () => {
             <h1>Seding to Server ....Pls wait</h1>{" "}
           </>
         ) : null}
+        <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}>
         <Button
           type="submit"
-          fullWidth
+          
           variant="contained"
           sx={{ mt: 3, mb: 2, borderRadius: defaultButtonRadius }}
         >
           {isSubmitting ? "Pls wait " : " Create Model Type Group"}
         </Button>
+        <Button
+         
+          
+          variant="contained"
+          sx={{ mt: 3, mb: 2, borderRadius: defaultButtonRadius }}
+          onClick={ onCancelHandler}
+        >
+          {isSubmitting ? "Pls wait " : " Cancel"}
+        </Button>
+        </Box>
         {errors.root && <p>{errors.root.message}</p>}
       </Box>
       <DevTool control={control} />
