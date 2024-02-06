@@ -1,10 +1,4 @@
-import { ModelTypeGroupResponseDTO } from "../Interfaces/AllInterfaces";
-
-import {
-
-  useModelTypeGroupDetails1,
-  useModelTypeGroupNames,
-} from "../Hooks/useGetModelTypeGroupHooks";
+import { useModelTypeGroupDetails1, useModelTypeGroupNames } from '../Hooks/useGetModelTypeGroupHooks';
 
 const ModelGroupPage = () => {
   const result = useModelTypeGroupNames();
@@ -28,10 +22,10 @@ const ModelGroupPage = () => {
       <div>
         {result2?.map((modelGroup, index) => (
           <div>
-            {index + 1} =={" "}
+            {index + 1} =={' '}
             {modelGroup.data?.map((val) => (
               <div>
-                {val.modelTypeGroupName} :{val.testingMode} :{val.description}{" "}
+                {val.modelTypeGroupName} :{val.testingMode} :{val.description}{' '}
               </div>
             ))}
           </div>

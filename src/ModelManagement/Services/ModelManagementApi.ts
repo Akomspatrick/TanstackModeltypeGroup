@@ -1,23 +1,17 @@
-import axios from "axios";
-import { BaseURLs } from "../Constants";
-import {
-  ModelTypeGroupCreateRequestDTO,
-  ModelTypeGroupResponseDTO,
-} from "../Interfaces/AllInterfaces";
-import {
-  ModelVersionGroupCreateRequestDTO,
-  ModelVersionGroupResponseDTO,
-} from "../Types/ModelManagementTypes";
+import axios from 'axios';
+import { BaseURLs } from '../Constants';
+import { ModelTypeGroupCreateRequestDTO, ModelTypeGroupResponseDTO } from '../Interfaces/AllInterfaces';
+import { ModelVersionGroupCreateRequestDTO, ModelVersionGroupResponseDTO } from '../Types/ModelManagementTypes';
 
 const axiosInstance = axios.create({
-  baseURL: BaseURLs.ModelManagementURL + "api/ModelVersionGroups",
+  baseURL: BaseURLs.ModelManagementURL + 'api/ModelVersionGroups',
 });
 
 export const getModelTypeGroup = async (id: string) => {
   try {
     //const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>(query,  { withCredentials: true });
     const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>(id);
-    console.log("====>");
+    console.log('====>');
     console.log(response);
     console.log(response.data);
     return response.data;
@@ -29,8 +23,8 @@ export const getModelTypeGroup = async (id: string) => {
 export const getModelTypeGroupNames = async () => {
   try {
     //const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>(query,  { withCredentials: true });
-    const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>("");
-    console.log("====>");
+    const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>('');
+    console.log('====>');
     console.log(response);
     console.log(response.data);
     return response.data.map((x) => x.modelTypeGroupName);
@@ -62,60 +56,52 @@ export const getModelTypeGroupNames = async () => {
 export const fetchModelGroups = async () => {
   try {
     //const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>(query,  { withCredentials: true });
-    const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>(
-      "LOADCELLS_GROUP"
-    );
-    console.log("====>");
+    const response = await axiosInstance.get<ModelTypeGroupResponseDTO[]>('LOADCELLS_GROUP');
+    console.log('====>');
     console.log(response);
     console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
 
-    console.log(".......");
+    console.log('.......');
     //console.log(error).then((res)=>{console.log(res)});
   }
 };
 
-export const addModelTypeGroupOld = async (
-  newModelGroup: ModelTypeGroupCreateRequestDTO
-) => {
+export const addModelTypeGroupOld = async (newModelGroup: ModelTypeGroupCreateRequestDTO) => {
   const response = await fetch(
-    BaseURLs.ModelManagementURL + "api/ModelVersionGroups",
+    BaseURLs.ModelManagementURL + 'api/ModelVersionGroups',
 
     {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(newModelGroup),
-    }
+    },
   );
   //if (response?.data?) {
   const data = await response.json();
-  console.log("data===>", data);
+  console.log('data===>', data);
   return data;
 };
 
-export const addModelTypeVersionGroup = async (
-  newModelGroup: ModelVersionGroupCreateRequestDTO
-) => {
+export const addModelTypeVersionGroup = async (newModelGroup: ModelVersionGroupCreateRequestDTO) => {
   const response = await axiosInstance.post<ModelVersionGroupResponseDTO>(
-    "",
-    newModelGroup
+    '',
+    newModelGroup,
     //{ withCredentials: true }
   );
   //if (response?.data?) {
   const data = await response.data;
-  console.log("data===>", data);
+  console.log('data===>', data);
   return data;
 };
 
 export const getModelVersionGroups = async () => {
   try {
-    const response = await axiosInstance.get<ModelVersionGroupResponseDTO[]>(
-      ""
-    );
+    const response = await axiosInstance.get<ModelVersionGroupResponseDTO[]>('');
 
     return response.data;
   } catch (error) {

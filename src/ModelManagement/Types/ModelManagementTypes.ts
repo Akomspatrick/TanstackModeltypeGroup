@@ -229,8 +229,10 @@ export interface ProductUpdateRequestDTO {
   timestamp: Date;
   stage: string;
   subStage: string;
+
   salesOrderId: string;
   cableLength: number;
+
   inspectionResult: number;
   defaultTestingMode: string;
   modelVersionGroupName: string;

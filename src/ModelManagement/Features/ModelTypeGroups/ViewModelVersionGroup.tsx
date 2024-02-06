@@ -1,21 +1,14 @@
-import { Box, Button,  Paper, Typography } from "@mui/material";
-import {
-  GridColDef,
-  GridValidRowModel
-} from "@mui/x-data-grid";
+import { Box, Button, Paper, Typography } from "@mui/material";
+import { GridColDef, GridValidRowModel } from "@mui/x-data-grid";
 import SimpleDataTable from "../../../Components/SimpleDataTable";
 import { defaultButtonRadius } from "../../../Constants/componenetsConstants";
 import { useGetModelVersionGroups } from "../../Hooks/useGetModelTypeGroupHooks";
-import { useSelector } from "react-redux";
 
-import { selectModelVersionGroup } from "../../../Store/Store";
-import {  useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 const ViewModelVersionGroup = () => {
-    
-  const modelversionsgropus = useSelector(selectModelVersionGroup)   ; 
-  console.log( modelversionsgropus);
-  console.log(" i WAS CALLED AT modelversionsgropus",Date.now());
+
   const navigate = useNavigate();
   const result = useGetModelVersionGroups();
   const newrows: GridValidRowModel[] = [];
@@ -38,7 +31,6 @@ const ViewModelVersionGroup = () => {
   if (result.isLoading) {
     return <div>Loading...</div>;
   }
- 
 
   const columns: GridColDef[] = [
     { field: "modelVersionGroupName", headerName: "GROUPNAME", width: 70 },
@@ -57,11 +49,10 @@ const ViewModelVersionGroup = () => {
     width: 800,
     margin: "20px auto",
   };
-    function NavigateHandler(event: React.MouseEvent<HTMLButtonElement>): void {
-
-        navigate("/newgroups", { replace: true });
-
-    }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function NavigateHandler(event: React.MouseEvent<HTMLButtonElement>): void {
+    navigate("/newgroups", { replace: true });
+  }
 
   return (
     <Paper
@@ -97,8 +88,6 @@ const ViewModelVersionGroup = () => {
           </Typography>
 
           <Button
-         
-            
             variant="contained"
             sx={{ borderRadius: defaultButtonRadius, marginBottom: 4 }}
             color="primary"
@@ -109,9 +98,8 @@ const ViewModelVersionGroup = () => {
         </Box>
         {/* <SimpleDataTable columns={columns} rows={rows} pageSize={3} /> */}
         {result.isSuccess && result.data && result.data.length > 0 && (
-          <SimpleDataTable columns={columns} rows={newrows} pageSize={3} />
+          <SimpleDataTable columns={columns} rows={newrows} pageSize={4} />
         )}
-
       </Box>
     </Paper>
   );

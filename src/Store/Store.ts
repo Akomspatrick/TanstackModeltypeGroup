@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import modelVersionReducer from  '../ModelManagement/Reducers/SomethingReducer'
-import { ModelVersionGroupCreateRequestDTO } from "../ModelManagement/Types/ModelManagementTypes";
+import { configureStore } from '@reduxjs/toolkit';
+import modelVersionReducer from '../ModelManagement/Reducers/SomethingReducer';
+//import { ModelVersionGroupCreateRequestDTO } from '../ModelManagement/Types/ModelManagementTypes';
 
 // interface ModelVersionGroupSliceSate {
 // modelversiongroups: ModelVersionGroupCreateRequestDTO[];
@@ -10,12 +10,12 @@ import { ModelVersionGroupCreateRequestDTO } from "../ModelManagement/Types/Mode
 //     modelversiongroups: []};
 
 const Store = configureStore({
-    reducer:{
-      modelVersionReducer,
-    }
-  })
+  reducer: {
+    modelVersionReducer,
+  },
+});
 export default Store;
 
 type RootState = ReturnType<typeof Store.getState>;
 export const selectModelVersionGroup = (state: RootState) => state.modelVersionReducer.modelversiongroups;
-type AppDispatch = typeof Store.dispatch
+//type AppDispatch = typeof Store.dispatch;
