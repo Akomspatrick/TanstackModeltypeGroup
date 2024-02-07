@@ -1,14 +1,13 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-
-import { addModelTypeVersionGroup } from '../Services/ModelManagementApi';
-import { ModelVersionGroupQueryKeys } from '../../Constants/TanstackQueryConstant';
+import { testingModeGroupQueryKeys } from '../../Constants/TanstackQueryConstant';
+import TestingModeCRUDApi from '../Services/TestingModeCRUDApi';
 
 export const useCreateModelTypeGroup = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: addModelTypeVersionGroup,
+    mutationFn: TestingModeCRUDApi.TestingModeCRUDApi().addData,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [ModelVersionGroupQueryKeys] });
+      queryClient.invalidateQueries({ queryKey: [testingModeGroupQueryKeys] });
     },
   });
 };

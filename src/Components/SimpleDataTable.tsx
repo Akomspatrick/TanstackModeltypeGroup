@@ -8,19 +8,19 @@ interface SimpleDataTableProps {
   pageSize?: number;
 }
 
-const SimpleDataTable = ({ columns, rows, height = 400, maxPagSize = 10, pageSize = 4 }: SimpleDataTableProps) => {
+const SimpleDataTable = ({ columns, rows, height = 400, maxPagSize = 10, pageSize = 7 }: SimpleDataTableProps) => {
   return (
     <div style={{ height: height, width: '100%' }}>
       <DataGrid
+        data-testid="SimpleDataTableId"
         rows={rows}
         columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: pageSize },
-          },
-        }}
-        pageSizeOptions={[5, maxPagSize]}
-        checkboxSelection
+        initialState={{ pagination: { paginationModel: { page: 0, pageSize: pageSize },   }, }}
+        pageSizeOptions={[pageSize, maxPagSize]}
+        checkboxSelection 
+        disableRowSelectionOnClick
+
+
       />
     </div>
   );

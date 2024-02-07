@@ -1,1 +1,1 @@
-export const ModelVersionGroupQueryKeys = 'modelversiongroup';
+export const testingModeGroupQueryKeys = 'TestingModeGroup';

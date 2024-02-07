@@ -8,6 +8,8 @@
 /* eslint-disable */
 // ReSharper disable InconsistentNaming
 
+
+
 export interface ModelCreateRequestDTO {
   guidId: string;
   modelName: string | undefined;
@@ -28,7 +30,7 @@ export interface ModelResponseDTO {
 export interface ModelTypeCreateRequestDTO {
   guidId: string;
   modelTypeName: string | undefined;
-  modelVersionGroupName: string | undefined;
+  testingModeGroupName: string | undefined;
 }
 
 export interface ModelTypeGetRequestDTO {
@@ -44,7 +46,7 @@ export interface ModelTypeResponseDTO {
 export interface ModelTypeUpdateRequestDTO {
   modelTypeId: string;
   modelTypeName: string | undefined;
-  modelVersionGroupName: string | undefined;
+  testingModeGroupName: string | undefined;
 }
 
 export interface ModelUpdateRequestDTO {
@@ -128,31 +130,6 @@ export interface ModelVersionGetRequestDTO {
   value: any | undefined;
 }
 
-export interface ModelVersionGroupCreateRequestDTO {
-  modelVersionGroupName: string | undefined;
-  testingMode: string | undefined;
-  description: string | undefined;
-  guidId: string;
-}
-
-export interface ModelVersionGroupGetRequestDTO {
-  value: any | undefined;
-}
-
-export interface ModelVersionGroupResponseDTO {
-  modelVersionGroupName: string | undefined;
-  testingMode: string | undefined;
-  description: string | undefined;
-  guidId: string;
-}
-
-export interface ModelVersionGroupUpdateRequestDTO {
-  modelVersionGroupName: string | undefined;
-  testingMode: string | undefined;
-  description: string | undefined;
-  guidId: string;
-}
-
 export interface ModelVersionResponseDTO {
   value: any | undefined;
 }
@@ -204,7 +181,7 @@ export interface ProductCreateRequestDTO {
   cableLength: number;
   inspectionResult: number;
   defaultTestingMode: string | undefined;
-  modelVersionGroupName: string | undefined;
+  testingModeGroupName: string | undefined;
   usedTestingMode: string | undefined;
   thermexPurcharseOrderNo: string | undefined;
   machiningPurcharseOrderNo: string | undefined;
@@ -233,7 +210,7 @@ export interface ProductUpdateRequestDTO {
   cableLength: number;
   inspectionResult: number;
   defaultTestingMode: string | undefined;
-  modelVersionGroupName: string | undefined;
+  testingModeGroupName: string | undefined;
   usedTestingMode: string | undefined;
   thermexPurcharseOrderNo: string | undefined;
   machiningPurcharseOrderNo: string | undefined;
@@ -281,5 +258,30 @@ export interface TestPointUpdateRequestDTO {
   modelVersionId: number;
   modelName: string | undefined;
   capacityTestPoint: number;
+  guidId: string;
+}
+
+export interface TestingModeGroupCreateRequestDTO {
+  testingModeGroupName: string | undefined;
+  testingMode: string | undefined;
+  description: string | undefined;
+  guidId: string;
+}
+
+export interface TestingModeGroupGetRequestDTO {
+  value: any | undefined;
+}
+
+export interface TestingModeGroupResponseDTO {
+  testingModeGroupName: string | undefined;
+  testingMode: string | undefined;
+  description: string | undefined;
+  guidId: string;
+}
+
+export interface TestingModeGroupUpdateRequestDTO {
+  testingModeGroupName: string | undefined;
+  testingMode: string | undefined;
+  description: string | undefined;
   guidId: string;
 }

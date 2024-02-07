@@ -14,7 +14,7 @@ const ModelTypeGroupTypeAddNewCard = () => {
         console.log(modelTypeGroupName);
         await addModelTypeGroupDataMutation({
           description,
-          modelVersionGroupName: modelTypeGroupName,
+          testingModeGroupName: modelTypeGroupName,
           testingMode,
           guidId: Guid.create().toString(),
         });

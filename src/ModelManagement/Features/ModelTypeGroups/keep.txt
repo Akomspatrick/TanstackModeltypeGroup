@@ -19,7 +19,7 @@ import { useGetModelVersionGroups } from "../../Hooks/useGetModelTypeGroupHooks"
         if (result.data && result.data.length > 0) {  
 
             result.data.forEach((element) => {
-                newrows.push({ id: element.guidId, modelVersionGroupName: element.modelVersionGroupName, testingMode: element.testingMode, description: element.description, guidId: element.guidId });
+                newrows.push({ id: element.guidId, testingModeGroupName: element.testingModeGroupName, testingMode: element.testingMode, description: element.description, guidId: element.guidId });
             }); 
           }
     }
@@ -55,7 +55,7 @@ import { useGetModelVersionGroups } from "../../Hooks/useGetModelTypeGroupHooks"
 
     const columns2: GridColDef[] = [
 
-      { field: "modelVersionGroupName", headerName: "GROUPNAME", width: 70 },
+      { field: "testingModeGroupName", headerName: "GROUPNAME", width: 70 },
       { field: "testingMode", headerName: "TESTINGMODE", width: 130 },
       { field: "description", headerName: "DESCRIPTION", width: 130 },
       { field: "guidId", headerName: "GUID", width: 130 },

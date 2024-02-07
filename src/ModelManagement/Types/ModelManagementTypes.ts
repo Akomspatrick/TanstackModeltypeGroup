@@ -28,7 +28,7 @@ export interface ModelResponseDTO {
 export interface ModelTypeCreateRequestDTO {
   guidId: string;
   modelTypeName: string;
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
 }
 
 export interface ModelTypeGetRequestDTO {
@@ -44,7 +44,7 @@ export interface ModelTypeResponseDTO {
 export interface ModelTypeUpdateRequestDTO {
   modelTypeId: string;
   modelTypeName: string;
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
 }
 
 export interface ModelUpdateRequestDTO {
@@ -129,7 +129,7 @@ export interface ModelVersionGetRequestDTO {
 }
 
 export interface ModelVersionGroupCreateRequestDTO {
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
   testingMode: string;
   description: string;
   guidId: string;
@@ -140,14 +140,14 @@ export interface ModelVersionGroupGetRequestDTO {
 }
 
 export interface ModelVersionGroupResponseDTO {
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
   testingMode: string;
   description: string;
   guidId: string;
 }
 
 export interface ModelVersionGroupUpdateRequestDTO {
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
   testingMode: string;
   description: string;
   guidId: string;
@@ -204,7 +204,7 @@ export interface ProductCreateRequestDTO {
   cableLength: number;
   inspectionResult: number;
   defaultTestingMode: string;
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
   usedTestingMode: string;
   thermexPurcharseOrderNo: string;
   machiningPurcharseOrderNo: string;
@@ -235,7 +235,7 @@ export interface ProductUpdateRequestDTO {
 
   inspectionResult: number;
   defaultTestingMode: string;
-  modelVersionGroupName: string;
+  testingModeGroupName: string;
   usedTestingMode: string;
   thermexPurcharseOrderNo: string;
   machiningPurcharseOrderNo: string;

@@ -17,7 +17,7 @@ const CreateModelVersionGroup = () => {
   const { register, handleSubmit, formState, control, setError } = useForm<ModelVersionGroupCreateRequestDTO>({
     defaultValues: {
       description: '',
-      modelVersionGroupName: '',
+      testingModeGroupName: '',
       testingMode: '',
     },
   });
@@ -81,15 +81,15 @@ const CreateModelVersionGroup = () => {
           id="modelTypeGroupName"
           label="Model Type Group Name"
           autoFocus
-          {...register('modelVersionGroupName', {
-            required: 'modelVersionGroupName is required',
+          {...register('testingModeGroupName', {
+            required: 'testingModeGroupName is required',
             maxLength: { value: 32, message: 'Max length is 32' },
             minLength: { value: 2, message: 'Min length is 2' },
           })}
-          error={!!errors.modelVersionGroupName}
-          helperText={errors.modelVersionGroupName?.message}
+          error={!!errors.testingModeGroupName}
+          helperText={errors.testingModeGroupName?.message}
         />
-        {errors.modelVersionGroupName && <p>{errors.modelVersionGroupName.message}</p>}
+        {errors.testingModeGroupName && <p>{errors.testingModeGroupName.message}</p>}
         <TextField
           margin="normal"
           required

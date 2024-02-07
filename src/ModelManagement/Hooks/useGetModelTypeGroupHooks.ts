@@ -1,25 +1,34 @@
-import { useQueries, useQuery } from '@tanstack/react-query';
-import { getModelTypeGroup, getModelTypeGroupNames, getModelVersionGroups } from '../Services/ModelManagementApi';
-import { ModelVersionGroupQueryKeys } from '../../Constants/TanstackQueryConstant';
+import {  useQuery } from '@tanstack/react-query';
+import {  testingModeGroupQueryKeys } from '../../Constants/TanstackQueryConstant';
+import TestingModeCRUDApi from '../Services/TestingModeCRUDApi';
 
-export const useModelTypeGroupNames = () => {
+//https://www.youtube.com/watch?v=8K1N3fE-cDs
+export const useGetTestingModeGroups = () => {
   return useQuery({
-    queryKey: ['modelgrouptypenames'],
-    queryFn: getModelTypeGroupNames,
+    queryKey: [testingModeGroupQueryKeys],
+    queryFn: TestingModeCRUDApi.TestingModeCRUDApi().getAllData,
   });
 };
 
-export const useModelTypeGroupDetails1 = (ids: (string | undefined)[] | undefined) => {
-  return useQueries({
-    queries: (ids ?? []).map((id) => {
-      console.log('id===>', id);
-      return {
-        queryKey: ['modelgrouptype', id],
-        queryFn: () => getModelTypeGroup(id!),
-      };
-    }),
-  });
-};
+
+// export const useModelTypeGroupNames = () => {
+//   return useQuery({
+//     queryKey: ['modelgrouptypenames'],
+//     queryFn: getModelTypeGroupNames,
+//   });
+// };
+
+// export const useModelTypeGroupDetails1 = (ids: (string | undefined)[] | undefined) => {
+//   return useQueries({
+//     queries: (ids ?? []).map((id) => {
+//       console.log('id===>', id);
+//       return {
+//         queryKey: ['modelgrouptype', id],
+//         queryFn: () => getModelTypeGroup(id!),
+//       };
+//     }),
+//   });
+// };
 
 // export const useModelTypeGroupDetails = (
 //   ids: (string | undefined)[] | undefined
@@ -41,12 +50,5 @@ export const useModelTypeGroupDetails1 = (ids: (string | undefined)[] | undefine
 //   return res;
 // };
 
-//https://www.youtube.com/watch?v=8K1N3fE-cDs
-export const useGetModelVersionGroups = () => {
-  return useQuery({
-    queryKey: [ModelVersionGroupQueryKeys],
-    queryFn: getModelVersionGroups,
-  });
-};
 
-getModelVersionGroups;
+

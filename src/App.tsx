@@ -1,3 +1,4 @@
+//import SimpleDataTablewtBt from './Components/SimpleDataTablewtBt';
 import NewModelGroupPage from './ModelManagement/Pages/NewModelGroupPage';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 https://www.youtube.com/watch?v=G-4zgIPsjkU&t=412s
 */}
 
-      <NewModelGroupPage />
+     <NewModelGroupPage /> 
+      {/* <SimpleDataTablewtBt /> */}
     </>
   );
 }
