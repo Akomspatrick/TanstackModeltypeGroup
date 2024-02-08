@@ -1,5 +1,7 @@
 //import SimpleDataTablewtBt from './Components/SimpleDataTablewtBt';
+import { Grid } from '@mui/material';
 import NewModelGroupPage from './ModelManagement/Pages/NewModelGroupPage';
+import Searchbar from './ModelManagement/Features/SearchModelTypeGroup/Searchbar';
 
 function App() {
   return (
@@ -13,9 +15,23 @@ function App() {
 {/* npm install -D jsdom @testing-library/react @testing-library/jest-dom @testing-library/user-event */}
 {/* https://github.com/vitest-dev/vitest/blob/main/examples/react-testing-lib-msw/vite.config.ts 
 https://www.youtube.com/watch?v=G-4zgIPsjkU&t=412s
-*/}
 
-     <NewModelGroupPage /> 
+
+render pdf in react
+https://www.youtube.com/watch?v=8K1N3fE-cDs
+https://www.youtube.com/watch?v=E0aK6CKsSNg
+https://www.npmjs.com/package/@cyntler/react-doc-viewer
+https://www.youtube.com/watch?v=0FRyKY_PMLE
+*/}
+<Grid container>
+  <Grid item xs={6}>
+     <NewModelGroupPage />
+  </Grid>
+     <Grid item xs={6}>
+     
+        <Searchbar />
+      </Grid> 
+</Grid>
       {/* <SimpleDataTablewtBt /> */}
     </>
   );
